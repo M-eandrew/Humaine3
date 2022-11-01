@@ -41,7 +41,7 @@ Route::middleware([
 Route::get('/return_worker_home', [UserController::class,'returnworkerhome']);
 Route::get('/add_refugee_view', [UserController::class,'addrefugeeview']);
 Route::post('/upload_refugee', [UserController::class,'uploadrefugee']);
-Route::get('/relocatedrefugee', [RelocateController::class,'relocatedrefugee']);
+Route::get('/relocate_refugee_view', [RelocateController::class,'relocatedrefugee']);
 Route::post('/upload_relocated', [RelocateController::class,'uploadrelocated']);
 
 //Route::get('/bodyhome', [CountController::class,'statistics']);

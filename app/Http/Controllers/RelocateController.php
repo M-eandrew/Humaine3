@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Refugees;
 use Illuminate\Http\Request;
 use App\Models\Relocation;
 
@@ -10,7 +11,16 @@ class RelocateController extends Controller
     //
     public function relocatedrefugee()
     {
-        return view('worker.relocatedrefugee');
+        $data = Refugees::pluck('country','country');
+        $data1 = Refugees::pluck('bdate','id');
+        $dataid = Refugees::pluck('idnum','id');
+        $data2 = Refugees::pluck('name','id');
+        return view('humanitarian.relocate_refugee', [
+            'data' => $data,
+            'data1' => $data1,
+            'data2' => $data2,
+            'dataid' => $dataid,
+    ]);
     }
 
     public function uploadrelocated(Request $requests)
@@ -30,7 +40,7 @@ class RelocateController extends Controller
         $refugee_relocate->idnum = $requests->idnum;
         $refugee_relocate->phonenum = $requests->phonenum;
         $refugee_relocate->camp = $requests->camp;
-        $refugee_relocate->rcamp = $requests->camp;
+        $refugee_relocate->rcountry = $requests->rcountry;
 
         $refugee_relocate->save();
         return redirect()->back()->with('message','Person Added Successfully');
