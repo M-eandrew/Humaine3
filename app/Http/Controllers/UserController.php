@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Refugees;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use App\Models\RelocatedRefugees;
+use App\Models\Relocation;
+use PDF;
+
 
 class UserController extends Controller
 {
@@ -12,15 +16,16 @@ class UserController extends Controller
     public function addrefugeeview()
     {
 
-        return view('humanitarian.add_refugee');
+        return view('humanitarian.addrefugee.add_refugee');
     }
 
     public function returnworkerhome()
     {
         $refugee = Refugees::all();
         $noofrefugees = Refugees::count('id');
+        $noofrrefugees = Relocation::count('id');
         //return view('worker.whome', compact('refugee', 'noofrefugees'));
-        return view('humanitarian.home', compact('noofrefugees','refugee'));
+        return view('humanitarian.main.home', compact('noofrefugees','refugee','noofrrefugees'));
     }
 
     public function uploadrefugee(Request $request)
@@ -46,6 +51,14 @@ class UserController extends Controller
         //return view('worker.whome');
 
     }
+    public function generate ($id)
+    {
+        $refugee = refugees::findOrFail($id);
+        $qr_string = $refugee->name." | ".$refugee->country." | ".$refugee->bdate;
+        $qrcode = QrCode::size(400)->generate($qr_string);
+        return view('admin.qr.qrcode',compact('qrcode'));
+    }
+    
     
     
 }

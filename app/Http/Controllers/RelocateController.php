@@ -15,11 +15,15 @@ class RelocateController extends Controller
         $data1 = Refugees::pluck('bdate','id');
         $dataid = Refugees::pluck('idnum','id');
         $data2 = Refugees::pluck('name','id');
-        return view('humanitarian.relocate_refugee', [
+        $dataphone = Refugees::pluck('phonenum','id');
+        $datacamp = Refugees::pluck('camp','id');
+        return view('humanitarian.relocaterefugee.relocate_refugee', [
             'data' => $data,
             'data1' => $data1,
             'data2' => $data2,
             'dataid' => $dataid,
+            'dataphone'=> $dataphone,
+            'datacamp' => $datacamp,
     ]);
     }
 
@@ -28,10 +32,10 @@ class RelocateController extends Controller
         $refugee_relocate = new relocation;
 
         //Uploading the image
-        $rphoto = $requests->rphoto;
-        $rphotoname = time().'.'.$rphoto->getClientoriginalExtension();
-        $requests->rphoto->move('refugeeimage',$rphotoname);
-        $refugee_relocate->rphoto = $rphotoname;
+        //$rphoto = $requests->rphoto;
+        //$rphotoname = time().'.'.$rphoto->getClientoriginalExtension();
+        //$requests->rphoto->move('refugeeimage',$rphotoname);
+        //$refugee_relocate->rphoto = $rphotoname;
 
         //rest of the data
         $refugee_relocate->name = $requests->name;

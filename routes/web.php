@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -38,11 +39,25 @@ Route::middleware([
     })->name('dashboard');
 });
 
+//refugees
 Route::get('/return_worker_home', [UserController::class,'returnworkerhome']);
 Route::get('/add_refugee_view', [UserController::class,'addrefugeeview']);
 Route::post('/upload_refugee', [UserController::class,'uploadrefugee']);
 Route::get('/relocate_refugee_view', [RelocateController::class,'relocatedrefugee']);
 Route::post('/upload_relocated', [RelocateController::class,'uploadrelocated']);
+
+//admin
+Route::get('/return_admin_home', [AdminController::class,'returnadminhome']);
+Route::get('/return_reports_view', [AdminController::class,'returnreportsview']);
+Route::get('/return_refugees_view', [AdminController::class,'returnrefugeesview']);
+
+//qrcode
+Route::get('qrcode/{id}', [UserController::class, 'generate'])->name('generate');
+
+//pdf
+//Route::get('generate-html-to-pdf', [AdminController::class, 'index'])->name('generate-html-to-pdf');
+Route::get('/print_pdf',array('as'=>'print_pdf','uses'=>'AdminController@print_pdf'));
+Route::get('export-pdf',[AdminController::class,'print_refugees']);
 
 //Route::get('/bodyhome', [CountController::class,'statistics']);
 

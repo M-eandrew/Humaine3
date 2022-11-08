@@ -9,6 +9,10 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+        <!-- CSS Files -->
+
+
+<link href="{{ asset('black') }}/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -40,5 +44,18 @@
         @stack('modals')
 
         @livewireScripts
+        <!--   Core JS Files   -->
+<script src="{{ asset('black') }}/js/core/jquery.min.js" type="text/javascript"></script>
+<script src="{{ asset('black') }}/js/core/popper.min.js" type="text/javascript"></script>
+<script src="{{ asset('black') }}/js/core/bootstrap.min.js" type="text/javascript"></script>
+<script src="{{ asset('black') }}/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+<!--  Google Maps Plugin    -->
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<!-- Chartist JS -->
+<script src="{{ asset('black') }}/js/plugins/chartjs.min.js"></script>
+<!--  Notifications Plugin    -->
+<script src="{{ asset('black') }}/js/plugins/bootstrap-notify.js"></script>
+<!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
+<script src="{{ asset('black') }}/js/black-dashboard.js?v=2.1.1" type="text/javascript"></script>
     </body>
 </html>

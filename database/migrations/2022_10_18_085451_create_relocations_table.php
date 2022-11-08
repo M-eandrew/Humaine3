@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('phonenum');
             $table->string('rcountry');
             $table->string('camp');
-            $table->string('rphoto');
+            //$table->string('rphoto');
             $table->timestamps();
         });
     }

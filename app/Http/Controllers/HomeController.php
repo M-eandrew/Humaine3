@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Refugees;
+use App\Models\Relocation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -16,7 +17,10 @@ class HomeController extends Controller
         {
             if(Auth::user()->usertype=='1')
             {
-                return view('user.homes');
+                $noofusers = User::count('id');
+                $noofrefugeess = Refugees::count('id');
+                $noofrrefugeess = Relocation::count('id');
+                return view('admin.main.home', compact('noofusers','noofrefugeess','noofrrefugeess'));
             }
             /*elseif(Auth::user()->usertype == '0')
             {
@@ -28,8 +32,9 @@ class HomeController extends Controller
             {
                 $refugee = Refugees::all();
                 $noofrefugees = Refugees::count('id');
+                $noofrrefugees = Relocation::count('id');
                 //return view('worker.whome', compact('refugee', 'noofrefugees'));
-                return view('humanitarian.home',compact('noofrefugees','refugee'));
+                return view('humanitarian.main.home',compact('noofrefugees','refugee','noofrrefugees'));
             }
             else
             {
