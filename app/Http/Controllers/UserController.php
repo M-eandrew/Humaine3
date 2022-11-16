@@ -7,6 +7,7 @@ use App\Models\Refugees;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use App\Models\RelocatedRefugees;
 use App\Models\Relocation;
+use App\Models\User;
 use PDF;
 
 
@@ -57,6 +58,13 @@ class UserController extends Controller
         $qr_string = $refugee->name." | ".$refugee->country." | ".$refugee->bdate;
         $qrcode = QrCode::size(400)->generate($qr_string);
         return view('admin.qr.qrcode',compact('qrcode'));
+    }
+    public function generateuser ($iduser)
+    {
+        $user = User::findOrFail($iduser);
+        $qr_string = $user->name." | ".$user->country." | ".$user->email."|".$user->camp."|".$user->nationality."|".$user->phone;
+        $qrcode = QrCode::size(400)->generate($qr_string);
+        return view('admin.users.qrcode',compact('qrcode'));
     }
     
     

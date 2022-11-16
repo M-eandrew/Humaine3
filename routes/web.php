@@ -50,9 +50,11 @@ Route::post('/upload_relocated', [RelocateController::class,'uploadrelocated']);
 Route::get('/return_admin_home', [AdminController::class,'returnadminhome']);
 Route::get('/return_reports_view', [AdminController::class,'returnreportsview']);
 Route::get('/return_refugees_view', [AdminController::class,'returnrefugeesview']);
+Route::get('/return_users_view', [AdminController::class, 'returnusersview']);
 
 //qrcode
 Route::get('qrcode/{id}', [UserController::class, 'generate'])->name('generate');
+Route::get('qrcodeuser/{iduser}', [UserController::class, 'generateuser'])->name('generateuser');
 
 //pdf
 //Route::get('generate-html-to-pdf', [AdminController::class, 'index'])->name('generate-html-to-pdf');

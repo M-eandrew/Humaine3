@@ -52,8 +52,10 @@ class AdminController extends Controller
         $pdf = PDF::loadView('admin.refugees.rpdf', $data)->setPaper('a4', 'landscape');
         //$pdf = PDF::loadView('admin.rpdf', ['refugee' => $data])->setOptions(['defaultFont' => 'sans-serif']);
         return $pdf->download('refugees.pdf');
-
-        
-
+    }
+    public function returnusersview()
+    {
+        $user = User::all();
+        return view('admin.users.body', compact('user'));
     }
 }
