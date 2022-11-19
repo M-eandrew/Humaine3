@@ -32,6 +32,30 @@
             </div>
             <span class="nav-link-text ms-1">RELOCATE REFUGEE</span>
           </a>
-        </li>
+       </li>
+       <li class="nav-item">
+          <a class="nav-link text-white " href="{{url ('return_resources_view') }}">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">diversity_3</i>
+            </div>
+            <span class="nav-link-text ms-1">DISBURSE RESOURCES</span>
+          </a>
+       </li>
+       <li class="nav-item">
+          <a class="nav-link text-white " href="{{url ('return_medical_view') }}">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">medical_information</i>
+            </div>
+            <span class="nav-link-text ms-1">MEDICAL INFORMATION</span>
+          </a>
+       </li>
+       <li class="nav-item">
+          <a class="nav-link text-white " href="{{url ('return_requestreports_view') }}">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">contact_support</i>
+            </div>
+            <span class="nav-link-text ms-1">REQUEST FOR REPORTS</span>
+          </a>
+       </li>
         
   </aside>

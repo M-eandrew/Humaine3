@@ -19,8 +19,6 @@
                             <th> ID Number </th>
                             <th> Phone Number </th>
                             <th> Camp </th>
-                            <th> QR Code </th>
-                            
                           </tr>
                         </thead>
                         @foreach($refugee as $refugees)
@@ -32,15 +30,12 @@
                               <td style="width:10px;height:10px;">
                                 <img src="refugeeimage/{{$refugees->rphoto}}"/>
                               </td>
-                              <td><a href="{{ route('profile') }}" target="_blank">{{$refugees->name}}</a></td>
+                              <td> {{$refugees->name}} </td>
                               <td> {{$refugees->country}} </td>
                               <td> {{$refugees->bdate}} </td>
                               <td> {{$refugees->idnum}} </td>
                               <td> {{$refugees->phonenum}} </td>
                               <td> {{$refugees->camp}} </td>
-                              <td>
-                                <a href="{{ route('generate', $refugees->id) }}" class="btn btn-primary">Generate</a>
-                              </td>
                             </tr>
                             <tr>
                               
@@ -49,7 +44,7 @@
                         @endforeach
                       </table>
                       <div class="d-flex justify-content-end mb-4">
-                         <a class="btn btn-primary" href="{{ url('export-pdf') }}">Export to PDF</a>
+                         <a class="btn btn-primary" href="{{ url('export_malakalrefugees') }}">Export to PDF</a>
                     </div>
                     
                     </div>

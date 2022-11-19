@@ -3,7 +3,7 @@
 
 <head>
   @include('humanitarian.cssjs.css')
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -13,7 +13,7 @@
      <!-- Navbar -->
     @include('humanitarian.main.navbar')
     <!-- End Navbar -->
-    @include('humanitarian.addrefugee.bodyadd')
+    @include('humanitarian.work.resources')
     @include('humanitarian.main.topbar')
   </main>
 
@@ -22,5 +22,3 @@
   @include('humanitarian.cssjs.js')
   @include('worker.script')
 </body>
-
-</html>

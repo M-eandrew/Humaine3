@@ -11,22 +11,32 @@
 
             <div>
                 <x-jet-label for="staff_id" value="{{ __('Staff ID') }}" />
-                <x-jet-input id="staff_id" class="block mt-1 w-full" type="text" name="staff_id" :value="old('staff_id')" required autofocus autocomplete="staff_id" />
+                <x-jet-input id="staff_id" class="block mt-1 w-full" type="text" name="staff_id" :value="old('staff_id')" required style="color: black; width: 400px;" autofocus autocomplete="staff_id" />
             </div>
             
             <div class="mt-4">
                 <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required style="color: black; width: 400px;" autofocus autocomplete="name" />
             </div>
 
             <div class="mt-4">
                 <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required style="color: black; width: 400px;" />
             </div>
 
             <div class="mt-4">
                 <x-jet-label for="camp" value="{{ __('Camp') }}" />
-                <x-jet-input id="camp" class="block mt-1 w-full" type="text" name="camp" :value="old('camp')" required autofocus autocomplete="camp" />
+                <select id="camp" name="camp" style="color: black; width: 400px;">
+                    <option value="none">Choose your Location</option>
+                    <option value="HQ">Headquarters</option>
+                    <option value="Bentiu">Bentiu</option>
+                    <option value="Bor">Bor</option>
+                    <option value="Dadaab">Dadaab</option>
+                    <option value="Kakuma">Kakuma</option>
+                    <option value="Kalobeyei">Kalobeyei</option>
+                    <option value="Malakal">Malakal</option>
+                    <option value="Nimule">Nimule</option>
+                </select>
             </div>
 
             <div class="mt-4">
@@ -278,17 +288,17 @@
 
             <div class="mt-4">
                 <x-jet-label for="phone" value="{{ __('Phone Number') }}" />
-                <x-jet-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required autofocus autocomplete="phone" />
+                <x-jet-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required style="color: black; width: 400px;" autofocus autocomplete="phone" />
             </div>
 
             <div class="mt-4">
                 <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required style="color: black; width: 400px;" autocomplete="new-password" />
             </div>
 
             <div class="mt-4">
                 <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required style="color: black; width: 400px;" autocomplete="new-password" />
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())

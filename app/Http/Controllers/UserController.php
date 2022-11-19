@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Distribution;
 use Illuminate\Http\Request;
 use App\Models\Refugees;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
@@ -11,7 +12,7 @@ use App\Models\User;
 use PDF;
 
 
-class UserController extends Controller
+class  UserController extends Controller
 {
     //
     public function addrefugeeview()
@@ -65,6 +66,37 @@ class UserController extends Controller
         $qr_string = $user->name." | ".$user->country." | ".$user->email."|".$user->camp."|".$user->nationality."|".$user->phone;
         $qrcode = QrCode::size(400)->generate($qr_string);
         return view('admin.users.qrcode',compact('qrcode'));
+    }
+    public function returnmedicalview()
+    {
+        return view('humanitarian.work.medicalhome');
+    }
+    public function returnrecourcesview()
+    {
+        $data = Refugees::pluck('name','id');
+        $data2 = Refugees::pluck('camp','id');
+        return view('humanitarian.work.resourceshome', [
+            'data'=>$data,
+            'data2'=>$data2,
+        ]);
+    }
+    public function resourcesdistributed(Request $request)
+    {
+        $distribution = new Distribution();
+
+        $distribution->name = $request->name;
+        $distribution->type = $request->type;
+        $distribution->quantity = $request->quantity;
+        $distribution->ddate = $request->ddate;
+        $distribution->camp = $request->camp;
+
+        $distribution->save();
+        return redirect()->back()->with('message','Distribution Recorded Successfully');
+
+    }
+    public function returnrequestreportsview()
+    {
+        return view('humanitarian.work.requestreports');
     }
     
     

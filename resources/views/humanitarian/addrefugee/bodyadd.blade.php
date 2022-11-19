@@ -4,13 +4,14 @@
       <form action="{{ url('upload_refugee') }}" method="POST" enctype="multipart/form-data" style="position: center;">
 
       @csrf
-        <div style="padding: 5px;">
-          <label>Name</label><br>
+      <div style="float:left">
+            <div style="padding: 5px;">
+          <label for="name" style="font-weight: bold;">Name</label><br>
           <input type="text" name="name" style="color: black; width: 300px;" placeholder="Input Refugee Name" required>
-        </div>
+            </div>
 
-        <div style="padding: 5px;">
-          <label for="country">Country of Origin:</label><br><br>
+            <div style="padding: 5px;">
+          <label for="country" style="font-weight: bold;">Country of Origin:</label><br>
           <select id="country" name="country" style="color: black; width: 300px;" required>
               <option value="none" default>Choose Country of Origin</option>
               <option value="Afghanistan">Afghanistan</option>
@@ -253,42 +254,62 @@
               <option value="Zambia">Zambia</option>
               <option value="Zimbabwe">Zimbabwe</option>
           </select>
-        </div>
+            </div>
 
-        <div style="padding: 5px;">
-          <label>Date of Birth:</label><br><br>
+            <div style="padding: 5px;">
+          <label for="bdate" style="font-weight: bold;">Date of Birth:</label><br>
           <input type="date" name="bdate" style="color: black; width: 300px;" required>
-        </div>
+            </div>
 
-        <div style="padding: 5px;">
-          <label>ID Number:</label><br><br>
+            <div style="padding: 5px;">
+          <label for="idnum" style="font-weight: bold;">ID Number:</label><br>
           <input type="text" name="idnum" style="color: black; width: 300px;" placeholder="Enter ID Number" required>
-        </div>
+            </div>
+            <div style="padding-left: 105px; padding-top: 25px; ">
+                <input type="submit" class="btn btn-success" style="background-color: #4CAF50;" >
+            </div>
+      </div>
 
-        <div style="padding: 5px;">
-          <label>Phone Number:</label><br><br>
+      <div style="float:right">
+            <div style="padding: 5px;">
+          <label for="phonenum" style="font-weight: bold;">Phone Number:</label><br>
           <input type="text" name="phonenum" style="color: black; width: 300px;" placeholder="Enter Phone Number" required>
-        </div>
+            </div>
 
-        <div style="padding: 5px;">
+            <div style="padding: 5px;">
+          <label for="camp_country" style="font-weight: bold;">Camp Country:</label><br>
+          <select id="camp_country" name="camp_country" style="color:black; width: 300px;" required >
+              <option value="none">Choose Camp Country</option>
+              <option value="Kenya">Kenya</option>
+              <option value="South Sudan">South Sudan</option>
+          </select>
+            </div>
+
+            <div style="padding: 5px;">
           <label for="camp" style="font-weight: bold;">Camp:</label><br>
           <select id="camp" name="camp" style="color:black; width: 300px;" required >
               <option value="none">Choose current Camp</option>
-              <option value="bentiu">Bentiu</option>
-              <option value="malakal">Malakal</option>
-              <option value="bor">Bor</option>
-              <option value="nimule">Nimule</option>
+              <optgroup label="Kenyan Camps:">
+                  <option value="Dadaab">Dadaab</option>
+                  <option value="Kakuma">Kakuma</option>
+                  <option value="Kalobeyei">Kalobeyei</option>
+              </optgroup>
+              <optgroup label="South Sudan Camps:">
+                  <option value="Bentiu">Bentiu</option>
+                  <option value="Bor">Bor</option>
+                  <option value="Malakal">Malakal</option>
+                  <option value="Nimule">Nimule</option>
+              </optgroup>
           </select>
-        </div>
+            </div>
+       
+            <div style="padding: 5px;">
+          <label for="rphoto" style="font-weight: bold;">Photo:</label><br>
+          <input type="file" name="rphoto" style="color:black; width: 300px;" required>
+            </div>
+      </div>
 
-        <div style="padding: 5px;">
-          <label>Photo:</label><br><br>
-          <input type="file" name="rphoto" required>
-        </div>
-
-        <div style="padding-left: 105px; padding-top: 25px; ">
-          <input type="submit" class="btn btn-success" >
-        </div>
+        
 
 
 

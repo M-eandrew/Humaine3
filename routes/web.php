@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DonorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -45,12 +46,26 @@ Route::get('/add_refugee_view', [UserController::class,'addrefugeeview']);
 Route::post('/upload_refugee', [UserController::class,'uploadrefugee']);
 Route::get('/relocate_refugee_view', [RelocateController::class,'relocatedrefugee']);
 Route::post('/upload_relocated', [RelocateController::class,'uploadrelocated']);
+Route::get('/return_medical_view',[UserController::class,'returnmedicalview']);
+Route::get('/return_resources_view',[UserController::class,'returnrecourcesview']);
+Route::get('/return_requestreports_view',[UserController::class,'returnrequestreportsview']);
+Route::post('/resources_distributions', [UserController::class, 'resourcesdistributed']);
 
 //admin
 Route::get('/return_admin_home', [AdminController::class,'returnadminhome']);
 Route::get('/return_reports_view', [AdminController::class,'returnreportsview']);
 Route::get('/return_refugees_view', [AdminController::class,'returnrefugeesview']);
 Route::get('/return_users_view', [AdminController::class, 'returnusersview']);
+Route::get('/return_bentiu_refugees',[AdminController::class,'returnbentiurefugees']);
+Route::get('/return_malakal_refugees',[AdminController::class,'returnmalakalrefugees']);
+Route::get('/return_bor_refugees', [AdminController::class, 'returnborrefugees']);
+Route::get('/return_nimule_refugees', [AdminController::class, 'returnnimulerefugees']);
+
+//donor
+Route::get('/return_adonations_view', [DonorController::class, 'returnadonationsview']);
+Route::get('/stripe', [DonorController::class, 'stripe']);
+Route::post('stripe', [DonorController::class, 'stripePost'])->name('stripe.post');
+
 
 //qrcode
 Route::get('qrcode/{id}', [UserController::class, 'generate'])->name('generate');
@@ -58,8 +73,13 @@ Route::get('qrcodeuser/{iduser}', [UserController::class, 'generateuser'])->name
 
 //pdf
 //Route::get('generate-html-to-pdf', [AdminController::class, 'index'])->name('generate-html-to-pdf');
-Route::get('/print_pdf',array('as'=>'print_pdf','uses'=>'AdminController@print_pdf'));
+//Route::get('/print_pdf',array('as'=>'print_pdf','uses'=>'AdminController@print_pdf'));
 Route::get('export-pdf',[AdminController::class,'print_refugees']);
+Route::get('export_bentiurefugees', [AdminController::class, 'print_bentiu']);
+Route::get('export_malakalrefugees', [AdminController::class,'print_malakal']);
+Route::get('export_borrefugees', [AdminController::class, 'print_bor']);
+Route::get('export_nimulerefugees', [AdminController::class, 'print_nimule']);
+Route::get('/export_resourcespdf',[AdminController::class,'print_resorces']);
 
 //Route::get('/bodyhome', [CountController::class,'statistics']);
 

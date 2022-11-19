@@ -11,6 +11,7 @@ use DB;
 //use PDF;
 use Barryvdh\DomPDF\Facade\PDF;
 use App;
+use App\Models\Distribution;
 
 class AdminController extends Controller
 {
@@ -20,8 +21,9 @@ class AdminController extends Controller
         $noofusers = User::count('id');
         $noofrefugeess = Refugees::count('id');
         $noofrrefugeess = Relocation::count('id');
+        $noofdistributions = Distribution::count('id');
 
-        return view('admin.main.home', compact('noofusers','noofrefugeess','noofrrefugeess'));
+        return view('admin.main.home', compact('noofusers','noofrefugeess','noofrrefugeess','noofdistributions'));
     }
     
     public function returnreportsview(){
@@ -57,5 +59,62 @@ class AdminController extends Controller
     {
         $user = User::all();
         return view('admin.users.body', compact('user'));
+    }
+    public function returnbentiurefugees()
+    {
+        $refugee = Refugees::select("*")->where("camp", "=", "bentiu")->get();
+        return view('admin.reports.bentiu.rbentiu', compact('refugee'));
+    }
+    public function print_bentiu()
+    {
+        $refugee = Refugees::select("*")->where("camp", "=", "bentiu")->get();
+        $data = [
+            'refugee' => $refugee,
+        ];
+        $pdf = PDF::loadView('admin.reports.bentiu.bentiupdf', $data)->setPaper('a4', 'landscape');
+        return $pdf->download('bentiu refugees.pdf');
+
+    }
+    public function returnmalakalrefugees()
+    {
+        $refugee = Refugees::select("*")->where("camp", "=", "malakal")->get();
+        return view('admin.reports.malakal.rmalakal', compact('refugee'));
+    }
+    public function print_malakal()
+    {
+        $refugee = Refugees::select("*")->where("camp", "=", "malakal")->get();
+        $data = [
+            'refugee' => $refugee,
+        ];
+        $pdf = PDF::loadView('admin.reports.malakal.malakalpdf', $data)->setPaper('a4', 'landscape');
+        return $pdf->download('malakal refugees.pdf');
+    }
+    public function returnborrefugees()
+    {
+        $refugee = Refugees::select("*")->where("camp", "=", "bor")->get();
+        return view('admin.reports.bor.rbor', compact('refugee'));
+    }
+    public function print_bor()
+    {
+        $refugee = Refugees::select("*")->where("camp", "=", "bor")->get();
+        $data = [
+            'refugee' =>$refugee,
+        ];
+        $pdf = PDF::loadView('admin.reports.bor.borpdf', $data)->setPaper('a4', 'landscape');
+        return $pdf->download('bor refugees.pdf');
+    }
+    public function returnnimulerefugees()
+    {
+        $refugee = Refugees::select("*")->where("camp", "=", "nimule")->get();
+        return view ('admin.reports.nimule.rnimule', compact('refugee'));
+    }
+    public function print_nimule()
+    {
+        $refugee = Refugees::select("*")->where("camp", "=", "nimule")->get();
+        $data = [
+            'refugee' => $refugee,
+        ];
+        $pdf = PDF::loadView('admin.reports.nimule.nimulepdf', $data)->setPaper('a4', 'landscape');
+        return $pdf->download('nimule refugees.pdf');
     }
 }

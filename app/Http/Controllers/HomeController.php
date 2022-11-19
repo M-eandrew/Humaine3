@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Distribution;
 use App\Models\Refugees;
 use App\Models\Relocation;
 use Illuminate\Http\Request;
@@ -20,7 +21,8 @@ class HomeController extends Controller
                 $noofusers = User::count('id');
                 $noofrefugeess = Refugees::count('id');
                 $noofrrefugeess = Relocation::count('id');
-                return view('admin.main.home', compact('noofusers','noofrefugeess','noofrrefugeess'));
+                $noofdistributions = Distribution::count('id');
+                return view('admin.main.home', compact('noofusers','noofrefugeess','noofrrefugeess','noofdistributions'));
             }
             /*elseif(Auth::user()->usertype == '0')
             {

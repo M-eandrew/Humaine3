@@ -13,17 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('refugees', function (Blueprint $table) {
+        Schema::create('distributions', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('country');
-            $table->string('bdate');
-            $table->string('idnum');
-            $table->string('phonenum');
-            $table->string('camp');
-            $table->string('camp_country');
-            $table->string('rphoto');
             $table->timestamps();
+            $table->string('name');
+            $table->string('type');
+            $table->string('quantity');
+            $table->string('ddate');
+            $table->string('camp');
+            
         });
     }
 
@@ -34,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('refugees');
+        Schema::dropIfExists('distributions');
     }
 };
