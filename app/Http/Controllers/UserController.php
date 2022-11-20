@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Distribution;
+use App\Models\Medical;
 use Illuminate\Http\Request;
 use App\Models\Refugees;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use App\Models\RelocatedRefugees;
 use App\Models\Relocation;
+use App\Models\ReportsRequest;
+use App\Models\ResourcesRequest;
 use App\Models\User;
 use PDF;
 
@@ -69,7 +72,12 @@ class  UserController extends Controller
     }
     public function returnmedicalview()
     {
-        return view('humanitarian.work.medicalhome');
+        $data = Refugees::pluck('name','id');
+        $data2 = Refugees::pluck('camp','id');
+        return view('humanitarian.work.medicalhome', [
+            'data'=>$data,
+            'data2'=>$data2,
+        ]);
     }
     public function returnrecourcesview()
     {
@@ -98,7 +106,47 @@ class  UserController extends Controller
     {
         return view('humanitarian.work.requestreports');
     }
-    
+    public function returnrequestresourceview()
+    {
+        return view('humanitarian.work.requestresources');
+    }
+    public function requestreports (Request $request)
+    {
+        $data = new ReportsRequest;
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->duedate = $request->duedate;
+        $data->rcategory = $request->rcategory;
+
+        $data->save();
+        return redirect()->back();
+    }
+    public function requestresources(Request $request) 
+    {
+        $data = new ResourcesRequest;
+        $data->name = $request->name;
+        $data->camp = $request->camp;
+        $data->duedate = $request->duedate;
+        $data->resourcecategory = $request->resourcecategory;
+        $data->description = $request->description;
+        $data->quantity = $request->quantity;
+
+        $data->save();
+        return redirect()->back();
+    }
+    public function uploadmedical(Request $request)
+    {
+        $data = new Medical;
+        $data->name = $request->name;
+        $data->camp = $request->camp;
+        $data->dateassessed = $request->dateassessed;
+        $data->illness = $request->illness;
+        $data->medicine = $request->medicine;
+        $data->appointment = $request->appointment;
+
+        $data->save();
+        return redirect()->back();
+    }
     
     
 }

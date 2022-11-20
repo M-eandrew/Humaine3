@@ -12,9 +12,8 @@
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
      <!-- Navbar -->
     @include('humanitarian.main.navbar')
-    @include('humanitarian.work.medical')
     <!-- End Navbar -->
-    
+    @include('humanitarian.work.rrequest')
     @include('humanitarian.main.topbar')
   </main>
 

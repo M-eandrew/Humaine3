@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Distribution;
+use App\Models\Medical;
 use App\Models\Refugees;
 use App\Models\Relocation;
+use App\Models\ReportsRequest;
+use App\Models\ResourcesRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -22,14 +25,13 @@ class HomeController extends Controller
                 $noofrefugeess = Refugees::count('id');
                 $noofrrefugeess = Relocation::count('id');
                 $noofdistributions = Distribution::count('id');
-                return view('admin.main.home', compact('noofusers','noofrefugeess','noofrrefugeess','noofdistributions'));
+                $noofreportsrequests = ReportsRequest::count('id');
+                $noofresourcesrequests = ResourcesRequest::count('id');
+                $noofillnesses = Medical::count('id');
+                return view('admin.main.home', compact(
+                    'noofusers','noofrefugeess','noofrrefugeess','noofdistributions','noofreportsrequests','noofresourcesrequests','noofillnesses'));
             }
-            /*elseif(Auth::user()->usertype == '0')
-            {
-                $refugee = Refugees::all();
-                $noofrefugees = Refugees::count('id');
-                return view('worker.whome', compact('refugee', 'noofrefugees'));
-            }*/
+            
             elseif(Auth::user()->usertype == '0')
             {
                 $refugee = Refugees::all();

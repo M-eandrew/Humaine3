@@ -1,9 +1,10 @@
 <div class="container-fluid py-4">
 <br><h1>Register Refugee</h1><br>
 <div class="form1">
-      <form action="{{ url('upload_refugee') }}" method="POST" enctype="multipart/form-data" style="position: center;">
+      <form class="main-form" action="{{ url('upload_refugee') }}" method="POST" enctype="multipart/form-data" style="position: center;">
 
       @csrf
+      
       <div style="float:left">
             <div style="padding: 5px;">
           <label for="name" style="font-weight: bold;">Name</label><br>

@@ -6,8 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RelocateController;
-
-
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,7 +48,11 @@ Route::post('/upload_relocated', [RelocateController::class,'uploadrelocated']);
 Route::get('/return_medical_view',[UserController::class,'returnmedicalview']);
 Route::get('/return_resources_view',[UserController::class,'returnrecourcesview']);
 Route::get('/return_requestreports_view',[UserController::class,'returnrequestreportsview']);
+Route::get('/return_resourcerequest_view', [UserController::class,'returnrequestresourceview']);
 Route::post('/resources_distributions', [UserController::class, 'resourcesdistributed']);
+Route::post('/request_resources', [UserController::class, 'requestresources']);
+Route::post('/request_reports', [UserController::class, 'requestreports']);
+Route::post('/upload_medical', [UserController::class,'uploadmedical']);
 
 //admin
 Route::get('/return_admin_home', [AdminController::class,'returnadminhome']);
@@ -60,6 +63,10 @@ Route::get('/return_bentiu_refugees',[AdminController::class,'returnbentiurefuge
 Route::get('/return_malakal_refugees',[AdminController::class,'returnmalakalrefugees']);
 Route::get('/return_bor_refugees', [AdminController::class, 'returnborrefugees']);
 Route::get('/return_nimule_refugees', [AdminController::class, 'returnnimulerefugees']);
+Route::get('echarts', [AdminController::class,'echart']);
+Route::get('/return_requests_view', [AdminController::class, 'returnadminrequests']);
+Route::get('/return_reportsrequests_view', [AdminController::class, 'returnreportsrequestsview']);
+Route::get('/return_resourcesrequests_view',[AdminController::class, 'returnresourcesrequestsview']);
 
 //donor
 Route::get('/return_adonations_view', [DonorController::class, 'returnadonationsview']);

@@ -12,6 +12,9 @@ use DB;
 use Barryvdh\DomPDF\Facade\PDF;
 use App;
 use App\Models\Distribution;
+use App\Models\Medical;
+use App\Models\ReportsRequest;
+use App\Models\ResourcesRequest;
 
 class AdminController extends Controller
 {
@@ -22,8 +25,12 @@ class AdminController extends Controller
         $noofrefugeess = Refugees::count('id');
         $noofrrefugeess = Relocation::count('id');
         $noofdistributions = Distribution::count('id');
+        $noofreportsrequests = ReportsRequest::count('id');
+        $noofresourcesrequests = ResourcesRequest::count('id');
+        $noofillnesses = Medical::count('id');
 
-        return view('admin.main.home', compact('noofusers','noofrefugeess','noofrrefugeess','noofdistributions'));
+        return view('admin.main.home', compact(
+            'noofusers','noofrefugeess','noofrrefugeess','noofdistributions', 'noofreportsrequests','noofresourcesrequests','noofillnesses'));
     }
     
     public function returnreportsview(){
@@ -116,5 +123,32 @@ class AdminController extends Controller
         ];
         $pdf = PDF::loadView('admin.reports.nimule.nimulepdf', $data)->setPaper('a4', 'landscape');
         return $pdf->download('nimule refugees.pdf');
+    }
+    public function echart( Request $request)
+    {
+        $bentiu = Refugees::where('camp', 'bentiu')->get();
+        $malakal = Refugees::where('camp', 'malakal')->get();
+        $bor = Refugees::where('camp', 'bor')->get();
+        $nimule = Refugees::where('camp', 'nimule')->get();
+        $bentiu_count = count($bentiu);
+        $malakal_count = count($malakal);
+        $bor_count = count($bor);
+        $nimule_count = count($nimule);
+
+        return view('admin.main.home', compact('bentiu_count', 'malakal_count', 'bor_count', 'nimule_count'));
+    }
+    public function returnadminrequests()
+    {
+        return view('admin.requests.requests');
+    }
+    public function returnreportsrequestsview()
+    {
+        $report = ReportsRequest::all();
+        return view('admin.requests.reports.rreports', compact('report'));
+    }
+    public function returnresourcesrequestsview()
+    {
+        $resource = ResourcesRequest::all();
+        return view('admin.requests.resources.rresources', compact('resource'));
     }
 }

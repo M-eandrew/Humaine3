@@ -4,7 +4,9 @@
       <form action="{{ url('upload_relocated') }}" method="POST" enctype="multipart/form-data" style="position: center;">
 
       @csrf
-        <div style="padding: 5px;color: black; width: 300px;">
+
+      <div style="float:left">
+      <div style="padding: 5px;color: black; width: 300px;">
           <label for="name" >Name</label><br>
           {!! F::select('name',$data2,null) !!}
         </div>
@@ -26,7 +28,10 @@
           {!! F::select('idnum',$dataid ,null) !!}
         </div>
 
-        <div style="padding: 5px; color: black; width: 300px;">
+      </div>
+
+      <div style="float:right">
+      <div style="padding: 5px; color: black; width: 300px;">
           <label>Phone Number:</label><br>
           {!! F::select('phonenum',$dataphone,null) !!}
         </div>
@@ -282,11 +287,14 @@
           </select>
         </div>
 
-        
-
         <div style="padding-left: 105px; padding-top: 25px; ">
-          <input type="submit" class="btn btn-success" >
+          <input type="submit" class="btn btn-success" style="background-color: #4CAF50;" >
         </div>
+
+      </div>
+      
+
+        
 
 
 
