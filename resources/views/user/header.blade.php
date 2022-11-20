@@ -43,7 +43,7 @@
               <a class="nav-link" href="{{ route('donate') }}">Donate</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="blog.html">News</a>
+              <a class="nav-link" href="https://www.unhcr.org/news-and-stories.html" target="_blank">News</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="contact.html">Contact</a>

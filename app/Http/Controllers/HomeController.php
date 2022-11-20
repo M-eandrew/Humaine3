@@ -40,7 +40,11 @@ class HomeController extends Controller
             }
             else
             {
-                return view('donor.home');
+                $noofusers = User::count('id');
+                $noofrefugeess = Refugees::count('id');
+                $noofrrefugeess = Relocation::count('id');
+                $noofdistributions = Distribution::count('id');
+                return view('donor.main.home' , compact('noofusers','noofrefugeess','noofrrefugeess','noofdistributions'));
             }
         }
         else
