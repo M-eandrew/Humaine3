@@ -72,6 +72,8 @@ Route::get('/return_resourcesrequests_view',[AdminController::class, 'returnreso
 Route::get('/return_adonations_view', [DonorController::class, 'returnadonationsview']);
 Route::get('/stripe', [DonorController::class, 'stripe']);
 Route::post('stripe', [DonorController::class, 'stripePost'])->name('stripe.post');
+Route::get('/return_drefugees_view', [DonorController::class, 'returndrefugeesview']);
+Route::get('export_pdf', [DonorController::class, 'print_refugees']);
 
 
 //qrcode

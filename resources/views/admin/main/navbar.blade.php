@@ -3,7 +3,8 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
           <nav aria-label="breadcrumb">
-          <h4 class="mb-1 mb-sm-0 ont-weight-bolder">Welcome, {{ Auth::user()->name}}, to the humAIne Admin Portal</h4>
+          <h4 id="time" class="mb-1 mb-sm-0 ont-weight-bolder"></h4>
+          <h4 class="mb-1 mb-sm-0 ont-weight-bolder">Welcome to the humAIne Admin Portal</h4>
           <p class="mb-0 font-weight-normal d-none d-sm-block">One Stop solution to all NGO needs</p>
         </nav>
           </ol>

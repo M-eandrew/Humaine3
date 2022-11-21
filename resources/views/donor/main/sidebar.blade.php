@@ -17,14 +17,14 @@
             <span class="nav-link-text ms-1">HOME</span>
           </a>
         </li>
-        <li class="nav-item">
+       <!-- <li class="nav-item">
           <a class="nav-link text-white " href="{{url('stripe') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
             <span class="nav-link-text ms-1">DONATE</span>
           </a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link text-white " href="{{ url('return_adonations_view') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -34,7 +34,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{ url('return_refugees_view') }}">
+          <a class="nav-link text-white " href="{{ url('return_drefugees_view') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">people</i>
             </div>

@@ -135,7 +135,7 @@ class AdminController extends Controller
         $bor_count = count($bor);
         $nimule_count = count($nimule);
 
-        return view('admin.main.home', compact('bentiu_count', 'malakal_count', 'bor_count', 'nimule_count'));
+        return view('admin.main.chart', compact('bentiu_count', 'malakal_count', 'bor_count', 'nimule_count'));
     }
     public function returnadminrequests()
     {
