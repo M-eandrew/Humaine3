@@ -50,9 +50,11 @@ class  UserController extends Controller
         $refugee->idnum = $request->idnum;
         $refugee->phonenum = $request->phonenum;
         $refugee->camp = $request->camp;
+        $refugee->campcountry = $request->campcountry;
+        $refugee->gender = $request->gender;
 
         $refugee->save();
-        return redirect()->back()->with('message','Person Added Successfully');
+        return redirect()->route('home')->with('message','Refugee Added Successfully');
         //return view('worker.whome');
 
     }
@@ -146,6 +148,26 @@ class  UserController extends Controller
 
         $data->save();
         return redirect()->back();
+    }
+    public function editrefugee($id)
+    {
+        $refugee = Refugees::find($id);
+        return view('humanitarian.editrefugee.home', compact('refugee'));
+    }
+    public function updaterefugee(Request $request)
+    {
+        $refugee = Refugees::find($request->id);
+        $refugee->name = $request->name;
+        $refugee->country = $request->country;
+        $refugee->bdate = $request->bdate;
+        $refugee->idnum = $request->idnum;
+        $refugee->phonenum = $request->phonenum;
+        $refugee->camp = $request->camp;
+        $refugee->campcountry = $request->campcountry;
+        $refugee->gender = $request->gender;
+
+        $refugee->save();
+        return redirect()->route('home')->with('message','Refugee Edited Successfully');
     }
     
     

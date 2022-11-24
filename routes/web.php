@@ -40,7 +40,7 @@ Route::middleware([
 });
 
 //refugees
-Route::get('/return_worker_home', [UserController::class,'returnworkerhome']);
+Route::get('/return_worker_home', [UserController::class,'returnworkerhome'])->name('home');
 Route::get('/add_refugee_view', [UserController::class,'addrefugeeview']);
 Route::post('/upload_refugee', [UserController::class,'uploadrefugee']);
 Route::get('/relocate_refugee_view', [RelocateController::class,'relocatedrefugee']);
@@ -53,20 +53,28 @@ Route::post('/resources_distributions', [UserController::class, 'resourcesdistri
 Route::post('/request_resources', [UserController::class, 'requestresources']);
 Route::post('/request_reports', [UserController::class, 'requestreports']);
 Route::post('/upload_medical', [UserController::class,'uploadmedical']);
+Route::get('/editRefugee/{id}', [UserController::class,'editrefugee']);
+Route::post('/updateRefugee',[UserController::class, 'updaterefugee']);
 
 //admin
-Route::get('/return_admin_home', [AdminController::class,'returnadminhome']);
+Route::get('/return_admin_home', [AdminController::class,'returnadminhome'])->name('homeadmin');
 Route::get('/return_reports_view', [AdminController::class,'returnreportsview']);
 Route::get('/return_refugees_view', [AdminController::class,'returnrefugeesview']);
-Route::get('/return_users_view', [AdminController::class, 'returnusersview']);
+Route::get('/return_users_view', [AdminController::class, 'returnusersview'])->name('usersadmin');
 Route::get('/return_bentiu_refugees',[AdminController::class,'returnbentiurefugees']);
 Route::get('/return_malakal_refugees',[AdminController::class,'returnmalakalrefugees']);
 Route::get('/return_bor_refugees', [AdminController::class, 'returnborrefugees']);
 Route::get('/return_nimule_refugees', [AdminController::class, 'returnnimulerefugees']);
+Route::get('/return_dadaab_refugees', [AdminController::class, 'returndadaabrefugees']);
+Route::get('/return_kakuma_refugees', [AdminController::class, 'returnkakumarefugees']);
+Route::get('/return_kalobeyei_refugees', [AdminController::class, 'returnkalobeyeirefugees']);
 Route::get('echarts', [AdminController::class,'echart']);
 Route::get('/return_requests_view', [AdminController::class, 'returnadminrequests']);
 Route::get('/return_reportsrequests_view', [AdminController::class, 'returnreportsrequestsview']);
 Route::get('/return_resourcesrequests_view',[AdminController::class, 'returnresourcesrequestsview']);
+Route::get('/return_relocations_view', [AdminController::class, 'returnrelocationsview']);
+Route::get('/editUser/{id}', [AdminController::class,'edituser']);
+Route::post('/updateUser',[AdminController::class, 'updateuser']);
 
 //donor
 Route::get('/return_adonations_view', [DonorController::class, 'returnadonationsview']);

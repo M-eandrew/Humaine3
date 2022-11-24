@@ -15,6 +15,7 @@ use App\Models\Distribution;
 use App\Models\Medical;
 use App\Models\ReportsRequest;
 use App\Models\ResourcesRequest;
+use App\Charts\RefugeesChart;
 
 class AdminController extends Controller
 {
@@ -69,60 +70,102 @@ class AdminController extends Controller
     }
     public function returnbentiurefugees()
     {
-        $refugee = Refugees::select("*")->where("camp", "=", "bentiu")->get();
+        $refugee = Refugees::select("*")->where("camp", "=", "Bentiu")->get();
         return view('admin.reports.bentiu.rbentiu', compact('refugee'));
     }
     public function print_bentiu()
     {
-        $refugee = Refugees::select("*")->where("camp", "=", "bentiu")->get();
+        $refugee = Refugees::select("*")->where("camp", "=", "Bentiu")->get();
         $data = [
             'refugee' => $refugee,
         ];
         $pdf = PDF::loadView('admin.reports.bentiu.bentiupdf', $data)->setPaper('a4', 'landscape');
-        return $pdf->download('bentiu refugees.pdf');
+        return $pdf->download('Bentiu refugees.pdf');
 
     }
     public function returnmalakalrefugees()
     {
-        $refugee = Refugees::select("*")->where("camp", "=", "malakal")->get();
+        $refugee = Refugees::select("*")->where("camp", "=", "Malakal")->get();
         return view('admin.reports.malakal.rmalakal', compact('refugee'));
     }
     public function print_malakal()
     {
-        $refugee = Refugees::select("*")->where("camp", "=", "malakal")->get();
+        $refugee = Refugees::select("*")->where("camp", "=", "Malakal")->get();
         $data = [
             'refugee' => $refugee,
         ];
         $pdf = PDF::loadView('admin.reports.malakal.malakalpdf', $data)->setPaper('a4', 'landscape');
-        return $pdf->download('malakal refugees.pdf');
+        return $pdf->download('Malakal refugees.pdf');
     }
     public function returnborrefugees()
     {
-        $refugee = Refugees::select("*")->where("camp", "=", "bor")->get();
+        $refugee = Refugees::select("*")->where("camp", "=", "Bor")->get();
         return view('admin.reports.bor.rbor', compact('refugee'));
     }
     public function print_bor()
+    {
+        $refugee = Refugees::select("*")->where("camp", "=", "Bor")->get();
+        $data = [
+            'refugee' =>$refugee,
+        ];
+        $pdf = PDF::loadView('admin.reports.bor.borpdf', $data)->setPaper('a4', 'landscape');
+        return $pdf->download('Bor refugees.pdf');
+    }
+    public function returnnimulerefugees()
+    {
+        $refugee = Refugees::select("*")->where("camp", "=", "Nimule")->get();
+        return view ('admin.reports.nimule.rnimule', compact('refugee'));
+    }
+    public function print_nimule()
+    {
+        $refugee = Refugees::select("*")->where("camp", "=", "Nimule")->get();
+        $data = [
+            'refugee' => $refugee,
+        ];
+        $pdf = PDF::loadView('admin.reports.nimule.nimulepdf', $data)->setPaper('a4', 'landscape');
+        return $pdf->download('Nimule refugees.pdf');
+    }
+    public function returnkakumarefugees()
+    {
+        $refugee = Refugees::select("*")->where("camp", "=", "Kakuma")->get();
+        return view('admin.reports.kakuma.rkakuma', compact('refugee'));
+    }
+    public function print_kakuma()
+    {
+        $refugee = Refugees::select("*")->where("camp", "=", "Kakuma")->get();
+        $data = [
+            'refugee' =>$refugee,
+        ];
+        $pdf = PDF::loadView('admin.reports.kakuma.kakumapdf', $data)->setPaper('a4', 'landscape');
+        return $pdf->download('Kakuma refugees.pdf');
+    }
+    public function returndadaabrefugees()
+    {
+        $refugee = Refugees::select("*")->where("camp", "=", "Dadaab")->get();
+        return view('admin.reports.dadaab.rdadaab', compact('refugee'));
+    }
+    public function print_dadaab()
     {
         $refugee = Refugees::select("*")->where("camp", "=", "bor")->get();
         $data = [
             'refugee' =>$refugee,
         ];
-        $pdf = PDF::loadView('admin.reports.bor.borpdf', $data)->setPaper('a4', 'landscape');
-        return $pdf->download('bor refugees.pdf');
+        $pdf = PDF::loadView('admin.reports.dadaab.dadaabpdf', $data)->setPaper('a4', 'landscape');
+        return $pdf->download('Dadaab refugees.pdf');
     }
-    public function returnnimulerefugees()
+    public function returnkalobeyeirefugees()
     {
-        $refugee = Refugees::select("*")->where("camp", "=", "nimule")->get();
-        return view ('admin.reports.nimule.rnimule', compact('refugee'));
+        $refugee = Refugees::select("*")->where("camp", "=", "Kalobeyei")->get();
+        return view('admin.reports.kalobeyei.rkalobeyei', compact('refugee'));
     }
-    public function print_nimule()
+    public function print_kalobeyei()
     {
-        $refugee = Refugees::select("*")->where("camp", "=", "nimule")->get();
+        $refugee = Refugees::select("*")->where("camp", "=", "Kalobeyei")->get();
         $data = [
-            'refugee' => $refugee,
+            'refugee' =>$refugee,
         ];
-        $pdf = PDF::loadView('admin.reports.nimule.nimulepdf', $data)->setPaper('a4', 'landscape');
-        return $pdf->download('nimule refugees.pdf');
+        $pdf = PDF::loadView('admin.reports.kalobeyei.kalobeyeipdf', $data)->setPaper('a4', 'landscape');
+        return $pdf->download('Kalobeyei refugees.pdf');
     }
     public function echart( Request $request)
     {
@@ -150,5 +193,30 @@ class AdminController extends Controller
     {
         $resource = ResourcesRequest::all();
         return view('admin.requests.resources.rresources', compact('resource'));
+    }
+    public function returnrelocationsview()
+    {
+        $relocation = Relocation::all();
+        return view('admin.relocations.body', compact('relocation'));
+    }
+    public function edituser($id)
+    {
+        $user = User::find($id);
+        return view('admin.editusers.home', compact('user'));
+    }
+    public function updateuser(Request $request)
+    {
+        $user = User::find($request->id);
+        $user->staff_id = $request->staff_id;
+        $user->name = $request->name;
+        $user->nationality = $request->nationality;
+        $user->email = $request->email;
+        $user->camp = $request->camp;
+        $user->phone = $request->phone;
+        $user->usertype = $request->usertype;
+        
+
+        $user->save();
+        return redirect()->route('usersadmin')->with('message','Refugee Edited Successfully');
     }
 }

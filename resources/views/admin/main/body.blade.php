@@ -7,7 +7,7 @@
                 <i class="material-icons opacity-10">people</i>
               </div>
               <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">Total Users</p>
+                <p class="text-sm mb-0 text-capitalize"><a href="{{ url('return_users_view')}}"> Total Users</a></p>
                 <h4 class="mb-0">{{ $noofusers }}</h4>
               </div>
             </div>
@@ -39,7 +39,7 @@
                 <i class="material-icons opacity-10">people</i>
               </div>
               <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize"> Total Relocations</p>
+                <p class="text-sm mb-0 text-capitalize"><a href="{{ url('return_relocations_view') }}"> Total Relocations </a></p>
                 <h4 class="mb-0">{{ $noofrrefugeess }}</h4>
               </div>
             </div>
@@ -126,8 +126,14 @@
         
         
       </div>
+      <div class="flex">
+        <div class="w-1/2"> 
+    
+        </div>
+
+      </div>
       <div class="row mt-4">
-        
+      
         
        
       </div>

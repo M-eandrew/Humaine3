@@ -3,6 +3,11 @@
   <script src="admindash/assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="admindash/assets/js/plugins/smooth-scrollbar.min.js"></script>
   <script src="admindash/assets/js/plugins/chartjs.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
+
+  <script>
+   
+  </script>
   <script>
     var ctx = document.getElementById("chart_bars").getContext("2d");
     if(ctx){

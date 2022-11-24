@@ -17,6 +17,8 @@ class RelocateController extends Controller
         $data2 = Refugees::pluck('name','id');
         $dataphone = Refugees::pluck('phonenum','id');
         $datacamp = Refugees::pluck('camp','id');
+        $datacampcountry = Refugees::pluck('campcountry','id');
+        $datagender = Refugees::pluck('gender','id');
         return view('humanitarian.relocaterefugee.relocate_refugee', [
             'data' => $data,
             'data1' => $data1,
@@ -24,6 +26,8 @@ class RelocateController extends Controller
             'dataid' => $dataid,
             'dataphone'=> $dataphone,
             'datacamp' => $datacamp,
+            'datacampcountry' =>$datacampcountry,
+            'datagender' => $datagender,
     ]);
     }
 
@@ -45,6 +49,9 @@ class RelocateController extends Controller
         $refugee_relocate->phonenum = $requests->phonenum;
         $refugee_relocate->camp = $requests->camp;
         $refugee_relocate->rcountry = $requests->rcountry;
+        $refugee_relocate->rdate = $requests->rdate;
+        $refugee_relocate->gender = $requests->gender;
+        $refugee_relocate->campcountry = $requests->campcountry;
 
         $refugee_relocate->save();
         return redirect()->back()->with('message','Person Added Successfully');

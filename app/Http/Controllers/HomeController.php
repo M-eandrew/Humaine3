@@ -11,6 +11,7 @@ use App\Models\ResourcesRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Charts\RefugeesChart;
 
 
 class HomeController extends Controller
@@ -28,6 +29,7 @@ class HomeController extends Controller
                 $noofreportsrequests = ReportsRequest::count('id');
                 $noofresourcesrequests = ResourcesRequest::count('id');
                 $noofillnesses = Medical::count('id');
+        
                 return view('admin.main.home', compact(
                     'noofusers','noofrefugeess','noofrrefugeess','noofdistributions','noofreportsrequests','noofresourcesrequests','noofillnesses'));
             }

@@ -16,12 +16,13 @@ return new class extends Migration
         Schema::create('refugees', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('gender');
             $table->string('country');
             $table->string('bdate');
             $table->string('idnum');
             $table->string('phonenum');
             $table->string('camp');
-            $table->string('camp_country');
+            $table->string('campcountry');
             $table->string('rphoto');
             $table->timestamps();
         });

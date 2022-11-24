@@ -18,6 +18,8 @@
                             <th> Camp </th>
                             <th> Nationality </th>
                             <th> Phone Number </th>
+                            <th> User Role</th>
+                            <th> Action </th>
                             <th> QR Code </th>
                           </tr>
                         </thead>
@@ -33,9 +35,19 @@
                               <td> {{$users->camp}} </td>
                               <td> {{$users->nationality}} </td>
                               <td> {{$users->phone}} </td>
+                              <td> {{$users->usertype}} </td>
+                              <td>
+                                  <form action="" method="POST">
+                                 
+                                      <a href="{{ "editUser/".$users['id'] }}"><i class="material-icons opacity-10">edit</i></a>
+                                         @csrf
+                                     
+                                    </form>
+                                </td>
                               <td>
                                 <a href="{{ route('generateuser', $users->id) }}" class="btn btn-primary">Generate</a>
                               </td>
+                              
                             </tr>
                             <tr>
                               
@@ -43,9 +55,6 @@
                           </tbody>
                         @endforeach
                       </table>
-                      <div class="d-flex justify-content-end mb-4">
-                         <a class="btn btn-primary" href="{{ url('export-pdf') }}">Export to PDF</a>
-                    </div>
                     </div>
                     
                   </div>

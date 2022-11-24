@@ -57,11 +57,14 @@
                             <th>No</th>
                             <th>Image</th>
                             <th> Name </th>
+                            <th> Gender </th>
                             <th> Country </th>
                             <th> Date of Birth </th>
                             <th> ID Number </th>
                             <th> Phone Number </th>
+                            <th> Camp Country </th>
                             <th> Camp </th>
+                            <th style="position: center;"> Action</th>
                           </tr>
                         </thead>
                         @foreach($refugee as $refugees)
@@ -73,12 +76,23 @@
                               <td style="width:10px;height:10px;">
                                 <img src="refugeeimage/{{$refugees->rphoto}}"/>
                               </td>
-                              <td><a href="{{ route('profile') }}" target="_blank">{{$refugees->name}}</a></td>
+                              <td> {{$refugees->name}} </td>
+                              <td> {{$refugees->gender}} </td>
                               <td> {{$refugees->country}} </td>
                               <td> {{$refugees->bdate}} </td>
                               <td> {{$refugees->idnum}} </td>
                               <td> {{$refugees->phonenum}} </td>
+                              <td> {{$refugees->campcountry}} </td>
                               <td> {{$refugees->camp}} </td>
+                              <td>
+                                  <form action="" method="POST">
+                                      <a href=""><i class="material-icons opacity-10">visibility</i></a> 
+                                      <a href="{{ "editRefugee/".$refugees['id'] }}"><i class="material-icons opacity-10">edit</i></a>
+                                         @csrf
+                                         @method('DELETE')
+                                      <a href=""><i class="material-icons opacity-10">delete</i></a>
+                                    </form>
+                                </td>
                             </tr>
                             <tr>
                               

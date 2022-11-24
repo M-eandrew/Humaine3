@@ -18,11 +18,13 @@ return new class extends Migration
             $table->string('name');
             $table->string('country');
             $table->string('bdate');
-            $table->string('idnum');
+            $table->string('idnum')->unique();
+            $table->string('camp');
+            $table->string('campcountry');
+            $table->string('gender');
             $table->string('phonenum');
             $table->string('rcountry');
-            $table->string('camp');
-            //$table->string('rphoto');
+            $table->string('rdate');
             $table->timestamps();
         });
     }

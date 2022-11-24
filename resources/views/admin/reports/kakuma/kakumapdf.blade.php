@@ -2,17 +2,16 @@
 <html lang="en">
 
 <head>
-
+  @include('admin.cssjs.css')
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
-  @include('admin.main.sidebar')
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
     <!-- Navbar -->
-    @include('admin.main.navbar')
+    @include('admin.reports.kakuma.kpdfnav')
     <!-- End Navbar -->
-    @include('admin.users.qrbody')
-    @include('admin.main.topbar')
+    @include('admin.reports.kakuma.kakumarpdf')
+ 
   </main>
  
   <!--   Core JS Files   -->

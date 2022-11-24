@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-
+  @include('admin.cssjs.css')
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -11,7 +11,7 @@
     <!-- Navbar -->
     @include('admin.main.navbar')
     <!-- End Navbar -->
-    @include('admin.users.qrbody')
+    @include('admin.reports.kalobeyei.refugeekalobeyei')
     @include('admin.main.topbar')
   </main>
  
